@@ -1,16 +1,34 @@
 import React, { Component } from 'react'
-import Layout from './components/Layout'
+import Header from './components/Header/Header'
+import Footer from './components/Footer/Footer'
+import Routes from './routes'
 import './App.css'
 
-class App extends Component {
+class Layout extends Component {
+  constructor () {
+    super()
+    this.state = {
+      title: 'Shano app!'
+    }
+
+    this.changeTitle = this.changeTitle.bind(this)
+  }
+
+  changeTitle (title) {
+    this.setState({ title })
+  }
 
   render () {
     return (
       <div className='app'>
-        <Layout />
+        <Header changeTitle={this.changeTitle} title={this.state.title} />
+        <main className='container'>
+          <Routes />
+        </main>
+        <Footer />
       </div>
     )
   }
 }
 
-export default App
+export default Layout
