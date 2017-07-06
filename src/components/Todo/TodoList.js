@@ -19,16 +19,20 @@ class TodoList extends Component {
     this.createTodo = this.createTodo.bind(this)
   }
 
-  createTodo (event) {
-    event.preventDefault()
-    TodoActions.createTodo(this.state.title)
-    this.setState({ title: '' })
-  }
-
   getAllTodos () {
     TodoStore
       .getAll()
       .then(todos => this.setState({ todos }))
+  }
+
+  componentDidMount () {
+    this.getAllTodos()
+  }
+
+  createTodo (event) {
+    event.preventDefault()
+    TodoActions.createTodo(this.state.title)
+    this.setState({ title: '' })
   }
 
   handleChange (event) {
@@ -43,18 +47,19 @@ class TodoList extends Component {
     ))
 
     return (
-      <div>
+      <div className='todo-wrapper'>
+        <h3>My To-Do List</h3>
         <ul>{todoElements}</ul>
         <div>
-          <input type='text' ref='title' value={this.state.title} onChange={this.handleChange} />
+          <input
+            type='text'
+            ref='title'
+            value={this.state.title}
+            onChange={this.handleChange} />
           <button onClick={this.createTodo}>Add</button>
         </div>
       </div>
     )
-  }
-
-  componentDidMount () {
-    this.getAllTodos()
   }
 }
 

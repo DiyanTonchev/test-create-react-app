@@ -22,6 +22,13 @@ class TodoStore extends EventEmitter {
     this.emit('change')
   }
 
+  completeTodo (id) {
+    const todo = this.todos.find(todo => todo.id === id)
+    todo.completed = true
+
+    this.emit('change')
+  }
+
   getAll () {
     return new Promise((resolve, reject) => {
       resolve(JSON.parse(JSON.stringify(this.todos)))
@@ -32,6 +39,10 @@ class TodoStore extends EventEmitter {
     switch (action.type) {
       case 'CREATE_TODO': {
         this.createTodo(action.title)
+        break
+      }
+      case 'COMPLETE_TODO': {
+        this.completeTodo(action.id)
         break
       }
       default: {
