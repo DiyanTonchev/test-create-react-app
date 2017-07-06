@@ -14,9 +14,6 @@ class TodoList extends Component {
     TodoStore.on('change', () => {
       this.getAllTodos()
     })
-
-    this.handleChange = this.handleChange.bind(this)
-    this.createTodo = this.createTodo.bind(this)
   }
 
   getAllTodos () {
@@ -55,8 +52,8 @@ class TodoList extends Component {
             type='text'
             ref='title'
             value={this.state.title}
-            onChange={this.handleChange} />
-          <button onClick={this.createTodo}>Add</button>
+            onChange={this.handleChange.bind(this)} />
+          <button onClick={this.createTodo.bind(this)}>Add</button>
         </div>
       </div>
     )

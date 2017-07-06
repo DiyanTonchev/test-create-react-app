@@ -10,8 +10,6 @@ class Layout extends Component {
     this.state = {
       title: 'Shano app!'
     }
-
-    this.changeTitle = this.changeTitle.bind(this)
   }
 
   changeTitle (title) {
@@ -21,7 +19,7 @@ class Layout extends Component {
   render () {
     return (
       <div className='app'>
-        <Header changeTitle={this.changeTitle} title={this.state.title} />
+        <Header changeTitle={this.changeTitle.bind(this)} title={this.state.title} />
         <main className='container'>
           <Routes />
         </main>
