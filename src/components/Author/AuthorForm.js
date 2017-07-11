@@ -1,26 +1,22 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import TextInput from '.././common/TextInput/TextInput'
 
 class AuthorForm extends Component {
+
   render () {
     return (
       <form>
-        <label htmlFor='firstName'>First Name</label>
-        <input
-          type='text'
+        <TextInput
           id='firstName'
-          name='firstName'
+          placeholder='First Name'
           value={this.props.author.firstName}
           onChange={this.props.handleInputChange} />
-        <br />
-        <label htmlFor='lastName'>Last Name</label>
-        <input
-          type='text'
-          id='firstName'
-          name='lastName'
+        <TextInput
+          id='lastName'
+          placeholder='Last Name'
           value={this.props.author.lastName}
           onChange={this.props.handleInputChange} />
-        <br />
         <button onClick={this.props.submit}>{this.props.actionType}</button>
       </form>
     )

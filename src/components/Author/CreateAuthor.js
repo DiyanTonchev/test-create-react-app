@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 import AuthorForm from './AuthorForm'
+import toastr from 'toastr'
+
+import './Author.css'
 
 class CreateAuthor extends Component {
   constructor (props) {
@@ -27,6 +30,7 @@ class CreateAuthor extends Component {
   saveAuthor (event) {
     event.preventDefault()
     console.log(this.state.author)
+    toastr.success('Author created successfully', 'Success')
   }
 
   render () {

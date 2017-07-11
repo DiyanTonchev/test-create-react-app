@@ -1,0 +1,8 @@
+.text-input {
+  margin: 10px;
+  padding: 5px;
+  line-height: 1.25;
+  color: #464a4c;
+  border: 1px solid rgba(0, 0, 0, .15);
+  border-radius: 3px;
+}
