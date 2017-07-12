@@ -1,18 +1,20 @@
 import React, { Component } from 'react'
+
 import TodoActions from '../../actions/TodoActions'
 import './Todo.css'
 
 class Todo extends Component {
-  completeTodo (event) {
+  completeTodo = (event) => {
     event.preventDefault()
     TodoActions.completeTodo(this.props.id)
   }
 
   render () {
+    const { title, completed } = this.props
     return (
       <li className='todo'>
-        {this.props.title} - {this.props.completed ? 'Done' : (
-          <button onClick={this.completeTodo.bind(this)}>PENDING</button>
+        {title} - {completed ? 'Done' : (
+          <button onClick={this.completeTodo}>PENDING</button>
          )}
       </li>
     )

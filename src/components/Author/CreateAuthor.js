@@ -5,18 +5,15 @@ import toastr from 'toastr'
 import './Author.css'
 
 class CreateAuthor extends Component {
-  constructor (props) {
-    super(props)
 
-    this.state = {
-      author: {
-        firstName: '',
-        lastName: ''
-      }
+  state = {
+    author: {
+      firstName: '',
+      lastName: ''
     }
   }
 
-  handleInputChange (event) {
+  handleInputChange = (event) => {
     event.preventDefault()
     const target = event.target
     const name = target.name
@@ -27,19 +24,19 @@ class CreateAuthor extends Component {
     this.setState({ author })
   }
 
-  saveAuthor (event) {
+  saveAuthor = (event) => {
     event.preventDefault()
     console.log(this.state.author)
     toastr.success('Author created successfully', 'Success')
   }
 
-  render () {
+  render() {
     return (
       <AuthorForm
         author={this.state.author}
-        handleInputChange={this.handleInputChange.bind(this)}
+        handleInputChange={this.handleInputChange}
         actionType='Create Author'
-        submit={this.saveAuthor.bind(this)}
+        submit={this.saveAuthor}
       />
     )
   }

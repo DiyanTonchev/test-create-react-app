@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+
 import Todo from './Todo'
 import TodoStore from '../../stores/TodoStore'
 import TodoActions from '../../actions/TodoActions'
@@ -26,13 +27,13 @@ class TodoList extends Component {
     this.getAllTodos()
   }
 
-  createTodo (event) {
+  createTodo = (event) => {
     event.preventDefault()
     TodoActions.createTodo(this.state.title)
     this.setState({ title: '' })
   }
 
-  handleChange (event) {
+  handleChange = (event) => {
     this.setState({ title: event.target.value })
   }
 
@@ -52,8 +53,8 @@ class TodoList extends Component {
             type='text'
             ref='title'
             value={this.state.title}
-            onChange={this.handleChange.bind(this)} />
-          <button onClick={this.createTodo.bind(this)}>Add</button>
+            onChange={this.handleChange} />
+          <button onClick={this.createTodo}>Add</button>
         </div>
       </div>
     )
